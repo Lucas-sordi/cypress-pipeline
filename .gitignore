@@ -5,3 +5,4 @@ cypress/mochawesome-report/
 cypress/logs/
 cypress/reports/
 reports/
+cypress.test.env.json
