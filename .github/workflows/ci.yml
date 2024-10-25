@@ -1,0 +1,44 @@
+name: Cypress Tests
+
+on:
+  push:
+    branches:
+      - main
+      - pipeline
+  pull_request:
+    branches:
+      - main
+      - pipeline
+      
+jobs:
+  cypress-run:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Cypress Run
+        run: cypress-io/github-action@v6
+
+      - name: Upload Cypress Reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: cypress-reports
+          path: reports
+
+      - name: Upload Cypress Screenshots
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cypress-screenshots
+          path: cypress/screenshots
+          if-no-files-found: ignore
+
+      - name: Upload Cypress Videos
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cypress-videos
+          path: cypress/videos
+          if-no-files-found: ignore
