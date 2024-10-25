@@ -22,14 +22,18 @@ module.exports = defineConfig({
     pageLoadTimeout: 10000,
     requestTimeout: 10000,
     setupNodeEvents(on, config) {
-      const environment = config.env.ENV || 'test';
-      const envFilePath = `./cypress.${environment}.env.json`;
-      const settings = require(envFilePath)
+      const isCI = process.env.CI === 'true';
 
-      if (settings) {
-        config.env = {
-          ...config.env,
-          ...settings,
+      if (!isCI) {
+        const environment = config.env.ENV || 'test';
+        const envFilePath = `./cypress.${environment}.env.json`;
+        const settings = require(envFilePath);
+
+        if (settings) {
+          config.env = {
+            ...config.env,
+            ...settings,
+          };
         }
       }
 
