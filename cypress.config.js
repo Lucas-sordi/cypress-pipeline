@@ -9,9 +9,9 @@ module.exports = defineConfig({
     reporter: "mochawesome",
     reporterOptions: {
       reportDir: "reports",
-      html: true,
-      json: false,
-      overwrite: true
+      html: false,
+      json: true,
+      overwrite: false
     },
     chromeWebSecurity: false,
     specPattern: "cypress/e2e/**/*.js",
