@@ -2,7 +2,7 @@
 
 #### Descrição
 
-Projeto de automação de testes com pipeline no github Actions. O projeto utiliza o [Saucedemo][https://saucedemo.com] - plataforma que simula um e-commerce.
+Projeto de automação de testes com pipeline no github Actions. O projeto utiliza o [Saucedemo](https://saucedemo.com) - plataforma que simula um e-commerce.
 
 O pipeline foi configurado para rodar toda vez que é feito um push ou pull request nas branchs `main` e `pipeline`.
 
